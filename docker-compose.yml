@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: invoice-iq-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: invoice_iq_user
+      POSTGRES_PASSWORD: invoice_iq_secret_password
+      POSTGRES_DB: invoice_iq
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U invoice_iq_user -d invoice_iq"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: invoice-iq-backend
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - ENVIRONMENT=production
+      - DEBUG=False
+      - DATABASE_URL=postgresql+psycopg2://invoice_iq_user:invoice_iq_secret_password@db:5432/invoice_iq
+      - API_V1_PREFIX=/api/v1
+      - ALLOWED_ORIGINS=["http://localhost:5173", "http://localhost:3000", "http://localhost:80"]
+      - UPLOAD_DIR=/app/data/uploads
+      - PROCESSED_PAGES_DIR=/app/data/processed_pages
+      - ML_ARTIFACTS_DIR=/app/ml/artifacts
+    ports:
+      - "8000:8000"
+    volumes:
+      - app_data:/app/data
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: invoice-iq-frontend
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+
+volumes:
+  postgres_data:
+  app_data:
+

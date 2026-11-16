@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="50%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0.2" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="128" height="128" rx="28" fill="url(#bgGrad)" stroke="#334155" stroke-width="2"/>
+
+  <!-- Document Sheet -->
+  <g transform="translate(24, 20)">
+    <!-- Document Body -->
+    <path d="M8 4 C8 1.8 9.8 0 12 0 L52 0 L68 16 L68 84 C68 86.2 66.2 88 64 88 L12 88 C9.8 88 8 86.2 8 84 Z" 
+          fill="#1e293b" stroke="#475569" stroke-width="2.5" />
+    
+    <!-- Folded Corner -->
+    <path d="M52 0 L52 16 L68 16 Z" fill="#334155" />
+
+    <!-- Document Lines (Invoice items) -->
+    <rect x="20" y="24" width="34" height="4" rx="2" fill="#64748b" />
+    <rect x="20" y="34" width="26" height="4" rx="2" fill="#475569" />
+    <rect x="20" y="44" width="38" height="4" rx="2" fill="#475569" />
+    <rect x="20" y="54" width="22" height="4" rx="2" fill="#475569" />
+
+    <!-- Subtotal & Total divider line -->
+    <line x1="18" y1="64" x2="60" y2="64" stroke="#475569" stroke-width="1.5" stroke-dasharray="2 2" />
+    <rect x="36" y="70" width="22" height="5" rx="2.5" fill="url(#accentGrad)" />
+  </g>
+
+  <!-- IQ Intelligence Badge / Verification Check Shield -->
+  <circle cx="92" cy="92" r="22" fill="#090d16" stroke="url(#accentGrad)" stroke-width="3" />
+  <circle cx="92" cy="92" r="18" fill="url(#bgGrad)" />
+  <!-- Verification / IQ Symbol -->
+  <path d="M84 92 L89 97 L100 86" fill="none" stroke="#22d3ee" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
+
