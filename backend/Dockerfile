@@ -20,9 +20,9 @@ COPY alembic /app/alembic
 COPY alembic.ini /app/alembic.ini
 
 ENV PYTHONPATH=/app
-ENV PORT=8000
+ENV PORT=10000
 
-EXPOSE 8000
+EXPOSE 10000
 
-CMD sh -c "uvicorn backend.app.main:app --host 0.0.0.0 --port ${PORT:-8000}"
+CMD ["sh", "-c", "uvicorn backend.app.main:app --host 0.0.0.0 --port ${PORT:-10000}"]
 

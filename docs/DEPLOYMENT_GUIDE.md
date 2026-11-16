@@ -86,3 +86,4 @@ Once both are deployed:
 1. Copy your Vercel URL (e.g. `https://invoice-iq-xyz.vercel.app`).
 2. Go back to **Render Dashboard** $\rightarrow$ `invoice-iq-backend` $\rightarrow$ **Environment**.
 3. Add your Vercel URL to `ALLOWED_ORIGINS` (our backend also automatically accepts all `https://*.vercel.app` origins via regex!).
+
